@@ -1,73 +1,149 @@
-# Welcome to your Lovable project
+# CodeDimension
 
-## Project info
+A modern, responsive website showcasing software development, IT consulting, and VR solutions.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Technologies
 
-## How can I edit this code?
+- **Vite** - Lightning-fast build tool
+- **React** - JavaScript library for building user interfaces
+- **React Router** - Client-side routing
+- **Tailwind CSS** - Utility-first CSS framework
+- **shadcn/ui** - High-quality React components
+- **Lucide React** - Beautiful icon library
 
-There are several ways of editing your application.
+## Prerequisites
 
-**Use Lovable**
+- Node.js (v16 or higher)
+- npm or yarn
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+Install Node.js using [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) (recommended)
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Installation
 
-**Use your preferred IDE**
+```bash
+# Clone the repository
+git clone <repository-url>
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+# Navigate to project directory
+cd code-dimension-showcase
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+# Install dependencies
+npm install
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The application will be available at `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Available Scripts
 
-**Use GitHub Codespaces**
+```bash
+# Start development server with hot reload
+npm run dev
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+# Build for production
+npm run build
 
-## What technologies are used for this project?
+# Build for development (with source maps)
+npm run build:dev
 
-This project is built with:
+# Preview production build
+npm run preview
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+# Run ESLint
+npm run lint
+```
 
-## How can I deploy this project?
+## Project Structure
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+```
+code-dimension-showcase/
+├── public/              # Static assets
+│   ├── logo.png        # Company logo
+│   └── favicon.ico     # Site favicon
+├── src/
+│   ├── components/     # Reusable components
+│   │   ├── ui/        # UI component library
+│   │   ├── Navbar.jsx
+│   │   └── Footer.jsx
+│   ├── pages/         # Page components
+│   │   ├── Index.jsx
+│   │   ├── Services.jsx
+│   │   ├── Products.jsx
+│   │   ├── About.jsx
+│   │   ├── Contact.jsx
+│   │   └── NotFound.jsx
+│   ├── hooks/         # Custom React hooks
+│   ├── lib/           # Utility functions
+│   ├── App.jsx        # Main app component
+│   └── main.jsx       # Entry point
+├── index.html
+├── package.json
+├── vite.config.js
+└── tailwind.config.js
+```
 
-## Can I connect a custom domain to my Lovable project?
+## Features
 
-Yes, you can!
+- **Multi-page Navigation** - Separate pages for Services, Products, About, and Contact
+- **Responsive Design** - Mobile-first approach, works on all devices
+- **Modern UI** - Clean, professional design with smooth animations
+- **Fast Performance** - Optimized with Vite for lightning-fast load times
+- **SEO Ready** - Proper meta tags and semantic HTML
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## Deployment
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+### Build for Production
+
+```bash
+npm run build
+```
+
+The production-ready files will be in the `dist/` directory.
+
+### Deploy to Various Platforms
+
+**Vercel:**
+```bash
+npm install -g vercel
+vercel
+```
+
+**Netlify:**
+```bash
+npm install -g netlify-cli
+netlify deploy --prod
+```
+
+**GitHub Pages:**
+```bash
+npm run build
+# Push dist/ directory to gh-pages branch
+```
+
+##Configuration
+
+### Custom Domain
+
+Update the base URL in `vite.config.js` if deploying to a subdirectory:
+
+```javascript
+export default defineConfig({
+  base: '/your-subdirectory/',
+  // ... other config
+});
+```
+
+### Environment Variables
+
+Create a `.env` file in the root directory:
+
+```
+VITE_API_URL=your_api_url_here
+VITE_CONTACT_EMAIL=info@codedimension.tech
+```
+
+## License
+
+Copyright © 2026 CodeDimension. All rights reserved.
