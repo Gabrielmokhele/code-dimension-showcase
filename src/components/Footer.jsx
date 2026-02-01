@@ -1,4 +1,5 @@
 import { Github, Linkedin, Twitter, Instagram } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const socialLinks = [
@@ -42,7 +43,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-2 space-y-6">
             <a href="#home" className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-primary glow" />
+              <img src="/logo.png" alt="CodeDimension Logo" className="w-14 h-14 object-contain" />
               <div className="flex flex-col">
                 <span className="font-display font-bold text-primary text-lg tracking-wide">
                   CodeDimension
@@ -77,12 +78,12 @@ const Footer = () => {
               <ul className="space-y-3">
                 {group.links.map((link) => (
                   <li key={link.name}>
-                    <a
-                      href={link.href}
+                    <Link
+                      to={link.href}
                       className="text-sm text-muted-foreground hover:text-primary transition-colors"
                     >
                       {link.name}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

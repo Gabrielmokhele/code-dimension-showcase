@@ -1,9 +1,9 @@
 import { Target, Users, Zap, Shield } from "lucide-react";
 
 const stats = [
-  { value: "10+", label: "Years Experience" },
-  { value: "150+", label: "Projects Delivered" },
-  { value: "50+", label: "Happy Clients" },
+  { value: "2+", label: "Years Experience" },
+  { value: "3+", label: "Projects Delivered" },
+  { value: "3+", label: "Happy Clients" },
   { value: "24/7", label: "Support" },
 ];
 
