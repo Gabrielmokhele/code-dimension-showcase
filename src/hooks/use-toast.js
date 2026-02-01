@@ -27,7 +27,7 @@ const addToRemoveQueue = (toastId) => {
   const timeout = setTimeout(() => {
     toastTimeouts.delete(toastId);
     dispatch({
-type,
+      type: actionTypes.REMOVE_TOAST,
       toastId: toastId,
     });
   }, TOAST_REMOVE_DELAY);
@@ -68,9 +68,9 @@ export const reducer = (state, action) => {
           t.id === toastId || toastId === undefined
             ? {
                 ...t,
-open,
+                open: false,
               }
-,
+            : t
         ),
       };
     }
@@ -104,17 +104,17 @@ function toast({ ...props }) {
 
   const update = (props) =>
     dispatch({
-type,
+      type: actionTypes.UPDATE_TOAST,
       toast: { ...props, id },
     });
   const dismiss = () => dispatch({ type: "DISMISS_TOAST", toastId: id });
 
   dispatch({
-type,
+    type: actionTypes.ADD_TOAST,
     toast: {
       ...props,
       id,
-open,
+      open: true,
       onOpenChange: (open) => {
         if (!open) dismiss();
       },
@@ -122,7 +122,7 @@ open,
   });
 
   return {
-id,
+    id,
     dismiss,
     update,
   };

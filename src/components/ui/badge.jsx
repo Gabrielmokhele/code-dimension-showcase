@@ -15,13 +15,13 @@ const badgeVariants = cva(
       },
     },
     defaultVariants: {
-variant,
+      variant: "default",
     },
   },
 );
 
 function Badge({ className, variant, ...props }) {
-  return ;
+  return <div className={cn(badgeVariants({ variant }), className)} {...props} />;
 }
 
 export { Badge, badgeVariants };

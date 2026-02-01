@@ -19,7 +19,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Brand */}
           <a href="#home" className="flex items-center gap-2 group">
-            <div className="w-3 h-3 rounded-full bg-primary glow animate-pulse" />
+            <img src="/logo.png" alt="CodeDimension Logo" className="w-8 h-8 object-contain" />
             <div className="flex flex-col">
               <span className="font-display font-bold text-primary text-lg tracking-wide">
                 CodeDimension

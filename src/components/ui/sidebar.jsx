@@ -300,13 +300,27 @@ const SidebarInput = React.forwardRef<React.ElementRef<typeof Input>, React.Comp
 );
 SidebarInput.displayName = "SidebarInput";
 
-const SidebarHeader = React.forwardRef>(({ className, ...props }, ref) => {
-  return ;
+const SidebarHeader = React.forwardRef(({ className, ...props }, ref) => {
+  return (
+    <div
+      ref={ref}
+      data-sidebar="header"
+      className={cn("flex flex-col gap-2 p-2", className)}
+      {...props}
+    />
+  );
 });
 SidebarHeader.displayName = "SidebarHeader";
 
-const SidebarFooter = React.forwardRef>(({ className, ...props }, ref) => {
-  return ;
+const SidebarFooter = React.forwardRef(({ className, ...props }, ref) => {
+  return (
+    <div
+      ref={ref}
+      data-sidebar="footer"
+      className={cn("flex flex-col gap-2 p-2", className)}
+      {...props}
+    />
+  );
 });
 SidebarFooter.displayName = "SidebarFooter";
 
@@ -426,8 +440,8 @@ const sidebarMenuButtonVariants = cva(
       },
     },
     defaultVariants: {
-variant,
-size,
+      variant: "default",
+      size: "default",
     },
   },
 );
