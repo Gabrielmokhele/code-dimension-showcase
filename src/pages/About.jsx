@@ -59,7 +59,7 @@ const About = () => {
               <h2 className="font-display text-3xl font-bold mb-6">Our Story</h2>
               <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
                 <p>
-                  Founded in 2018, CodeDimension emerged from a simple yet powerful vision: to bridge the gap 
+                  Founded in 2025, CodeDimension emerged from a simple yet powerful vision: to bridge the gap 
                   between cutting-edge technology and practical business solutions. What started as a small team 
                   of developers has grown into a full-service technology partner serving clients worldwide.
                 </p>

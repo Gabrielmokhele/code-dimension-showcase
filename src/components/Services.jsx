@@ -1,4 +1,4 @@
-import { Code, Headphones, Glasses, ArrowRight } from "lucide-react";
+import { Code, Bot, Glasses, ArrowRight } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const services = [
@@ -10,18 +10,18 @@ const services = [
     features: ["Web Applications", "Mobile Apps", "API Development", "Cloud Solutions"],
   },
   {
-    icon: Headphones,
-    title: "IT Consulting & Support",
+    icon: Bot,
+    title: "AI Integration & Chatbots",
     description:
-      "Strategic IT guidance, cloud migrations, security, and 24/7 support tailored to your business.",
-    features: ["Cloud Migration", "Cybersecurity", "24/7 Support", "Infrastructure"],
+      "Intelligent chatbots and AI solutions to automate customer interactions and streamline your business.",
+    features: ["Custom AI Chatbots", "NLP Integration", "Multi-Platform Support", "24/7 Automation"],
   },
   {
     icon: Glasses,
-    title: "VR & Immersive Technology",
+    title: "VR Experience Services",
     description:
-      "Design and deliver immersive VR experiences for training, visualization, and product demos.",
-    features: ["VR Training", "3D Visualization", "Product Demos", "Interactive Experiences"],
+      "Premium VR experiences for events, shows, and special occasions. We bring immersive entertainment to your venue.",
+    features: ["VR Concert Experiences", "Event VR Setups", "Virtual Entertainment", "On-Site Management"],
   },
 ];
 

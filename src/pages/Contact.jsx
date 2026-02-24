@@ -134,13 +134,12 @@ const Contact = () => {
                   
                   <div>
                     <label className="block text-sm font-medium mb-2">Service Interest</label>
-                    <select className="w-full px-4 py-2 rounded-md bg-background border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20">
-                      <option>Software Development</option>
-                      <option>IT Consulting</option>
-                      <option>VR Solutions</option>
-                      <option>Product Demo</option>
-                      <option>General Inquiry</option>
-                    </select>
+                 
+                    <input
+                      type="text"
+                      className="w-full px-4 py-2 rounded-md bg-background border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                      placeholder="Service of Interest"
+                    />
                   </div>
                   
                   <div>
@@ -198,10 +197,7 @@ const Contact = () => {
                     We value your time. Our team typically responds to all inquiries within 24 hours 
                     during business days, and often much faster.
                   </p>
-                  <div className="flex items-center gap-2 text-sm text-primary">
-                    <Globe className="h-4 w-4" />
-                    <span>Serving clients globally across 15+ countries</span>
-                  </div>
+                  
                 </CardContent>
               </Card>
             </div>
