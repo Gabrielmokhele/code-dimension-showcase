@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -13,14 +14,39 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      toast({
-        title: "Message sent!",
-        description: "We'll get back to you as soon as possible.",
+    // EmailJS Configuration
+    const serviceId = 'YOUR_SERVICE_ID'; // Replace with your EmailJS service ID
+    const templateId = 'YOUR_TEMPLATE_ID'; // Replace with your EmailJS template ID
+    const publicKey = 'YOUR_PUBLIC_KEY'; // Replace with your EmailJS public key
+
+    // Get form data
+    const formData = {
+      from_name: e.target.name.value,
+      from_email: e.target.email.value,
+      subject: e.target.subject.value,
+      message: e.target.message.value,
+    };
+
+    // Send email using EmailJS
+    emailjs.send(serviceId, templateId, formData, publicKey)
+      .then((response) => {
+        console.log('Email sent successfully!', response.status, response.text);
+        setIsSubmitting(false);
+        toast({
+          title: "Message sent!",
+          description: "We'll get back to you as soon as possible.",
+        });
+        e.target.reset();
+      })
+      .catch((error) => {
+        console.error('Failed to send email:', error);
+        setIsSubmitting(false);
+        toast({
+          title: "Error",
+          description: "Failed to send message. Please try again or email us directly.",
+          variant: "destructive",
+        });
       });
-    }, 1000);
   };
 
   return (

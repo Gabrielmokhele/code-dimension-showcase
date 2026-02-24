@@ -3,6 +3,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+import emailjs from '@emailjs/browser';
 
 const contactMethods = [
    {
@@ -39,6 +42,50 @@ const offices = [
 ];
 
 const Contact = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // EmailJS Configuration - REPLACE THESE WITH YOUR ACTUAL VALUES
+    const serviceId = 'YOUR_SERVICE_ID';
+    const templateId = 'YOUR_TEMPLATE_ID';
+    const publicKey = 'YOUR_PUBLIC_KEY';
+
+    // Get form data
+    const formData = {
+      first_name: e.target.firstName.value,
+      last_name: e.target.lastName.value,
+      from_email: e.target.email.value,
+      company: e.target.company.value,
+      service: e.target.service.value,
+      message: e.target.message.value,
+    };
+
+    // Send email using EmailJS
+    emailjs.send(serviceId, templateId, formData, publicKey)
+      .then((response) => {
+        console.log('Email sent successfully!', response.status);
+        setIsSubmitting(false);
+        toast({
+          title: "Message sent!",
+          description: "Thank you for contacting us. We'll get back to you within 24 hours.",
+        });
+        e.target.reset();
+      })
+      .catch((error) => {
+        console.error('Failed to send email:', error);
+        setIsSubmitting(false);
+        toast({
+          title: "Error sending message",
+          description: "Please try again or email us directly at info@codedimension.tech",
+          variant: "destructive",
+        });
+      });
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -94,12 +141,14 @@ const Contact = () => {
                 </p>
               </CardHeader>
               <CardContent>
-                <form className="space-y-4">
+                <form className="space-y-4" onSubmit={handleSubmit}>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium mb-2">First Name</label>
                       <input
                         type="text"
+                        name="firstName"
+                        required
                         className="w-full px-4 py-2 rounded-md bg-background border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
                         placeholder="John"
                       />
@@ -108,6 +157,8 @@ const Contact = () => {
                       <label className="block text-sm font-medium mb-2">Last Name</label>
                       <input
                         type="text"
+                        name="lastName"
+                        required
                         className="w-full px-4 py-2 rounded-md bg-background border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
                         placeholder="Doe"
                       />
@@ -118,6 +169,8 @@ const Contact = () => {
                     <label className="block text-sm font-medium mb-2">Email</label>
                     <input
                       type="email"
+                      name="email"
+                      required
                       className="w-full px-4 py-2 rounded-md bg-background border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
                       placeholder="john@example.com"
                     />
@@ -127,6 +180,7 @@ const Contact = () => {
                     <label className="block text-sm font-medium mb-2">Company</label>
                     <input
                       type="text"
+                      name="company"
                       className="w-full px-4 py-2 rounded-md bg-background border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
                       placeholder="Your Company"
                     />
@@ -137,6 +191,7 @@ const Contact = () => {
                  
                     <input
                       type="text"
+                      name="service"
                       className="w-full px-4 py-2 rounded-md bg-background border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
                       placeholder="Service of Interest"
                     />
@@ -145,15 +200,17 @@ const Contact = () => {
                   <div>
                     <label className="block text-sm font-medium mb-2">Message</label>
                     <textarea
+                      name="message"
                       rows={5}
+                      required
                       className="w-full px-4 py-2 rounded-md bg-background border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
                       placeholder="Tell us about your project..."
                     />
                   </div>
                   
-                  <Button className="w-full" size="lg">
+                  <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
                     <Send className="h-4 w-4 mr-2" />
-                    Send Message
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
               </CardContent>
