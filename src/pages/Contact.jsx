@@ -84,7 +84,7 @@ const Contact = () => {
         toast({
           title: "Error sending message",
           description:
-            "Please try again or email us directly at info@codedimension.tech",
+            "Please try again or email us directly at hello@codedimension.site",
           variant: "destructive",
         });
       });

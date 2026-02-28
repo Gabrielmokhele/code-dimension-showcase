@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -13,11 +13,11 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // EmailJS Configuration
-    const serviceId = 'YOUR_SERVICE_ID'; // Replace with your EmailJS service ID
-    const templateId = 'YOUR_TEMPLATE_ID'; // Replace with your EmailJS template ID
-    const publicKey = 'YOUR_PUBLIC_KEY'; // Replace with your EmailJS public key
+    const serviceId = "YOUR_SERVICE_ID"; // Replace with your EmailJS service ID
+    const templateId = "YOUR_TEMPLATE_ID"; // Replace with your EmailJS template ID
+    const publicKey = "YOUR_PUBLIC_KEY"; // Replace with your EmailJS public key
 
     // Get form data
     const formData = {
@@ -28,9 +28,10 @@ const Contact = () => {
     };
 
     // Send email using EmailJS
-    emailjs.send(serviceId, templateId, formData, publicKey)
+    emailjs
+      .send(serviceId, templateId, formData, publicKey)
       .then((response) => {
-        console.log('Email sent successfully!', response.status, response.text);
+        console.log("Email sent successfully!", response.status, response.text);
         setIsSubmitting(false);
         toast({
           title: "Message sent!",
@@ -39,11 +40,12 @@ const Contact = () => {
         e.target.reset();
       })
       .catch((error) => {
-        console.error('Failed to send email:', error);
+        console.error("Failed to send email:", error);
         setIsSubmitting(false);
         toast({
           title: "Error",
-          description: "Failed to send message. Please try again or email us directly.",
+          description:
+            "Failed to send message. Please try again or email us directly.",
           variant: "destructive",
         });
       });
@@ -52,7 +54,7 @@ const Contact = () => {
   return (
     <section id="contact" className="py-24 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
-      
+
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Left Content */}
@@ -62,7 +64,8 @@ const Contact = () => {
                 Get in Touch
               </h2>
               <p className="text-muted-foreground text-lg">
-                Ready to transform your ideas into reality? Let's start a conversation.
+                Ready to transform your ideas into reality? Let's start a
+                conversation.
               </p>
             </div>
 
@@ -73,8 +76,11 @@ const Contact = () => {
                 </div>
                 <div>
                   <div className="text-sm text-muted-foreground">Email</div>
-                  <a href="mailto:hello@codedimension.com" className="text-foreground hover:text-primary transition-colors">
-                    hello@codedimension.com
+                  <a
+                    href="mailto:hello@codedimension.com"
+                    className="text-foreground hover:text-primary transition-colors"
+                  >
+                    hello@codedimension.site
                   </a>
                 </div>
               </div>
@@ -85,7 +91,10 @@ const Contact = () => {
                 </div>
                 <div>
                   <div className="text-sm text-muted-foreground">Phone</div>
-                  <a href="tel:+27673102522" className="text-foreground hover:text-primary transition-colors">
+                  <a
+                    href="tel:+27673102522"
+                    className="text-foreground hover:text-primary transition-colors"
+                  >
                     (+27) 67 310 2522
                   </a>
                 </div>
@@ -97,7 +106,9 @@ const Contact = () => {
                 </div>
                 <div>
                   <div className="text-sm text-muted-foreground">Location</div>
-                  <span className="text-foreground">Pretoria, South Africa</span>
+                  <span className="text-foreground">
+                    Pretoria, South Africa
+                  </span>
                 </div>
               </div>
             </div>
@@ -107,7 +118,10 @@ const Contact = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label htmlFor="name" className="text-sm font-medium text-foreground">
+                <label
+                  htmlFor="name"
+                  className="text-sm font-medium text-foreground"
+                >
                   Name
                 </label>
                 <Input
@@ -118,7 +132,10 @@ const Contact = () => {
                 />
               </div>
               <div className="space-y-2">
-                <label htmlFor="email" className="text-sm font-medium text-foreground">
+                <label
+                  htmlFor="email"
+                  className="text-sm font-medium text-foreground"
+                >
                   Email
                 </label>
                 <Input
@@ -132,7 +149,10 @@ const Contact = () => {
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="subject" className="text-sm font-medium text-foreground">
+              <label
+                htmlFor="subject"
+                className="text-sm font-medium text-foreground"
+              >
                 Subject
               </label>
               <Input
@@ -144,7 +164,10 @@ const Contact = () => {
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="message" className="text-sm font-medium text-foreground">
+              <label
+                htmlFor="message"
+                className="text-sm font-medium text-foreground"
+              >
                 Message
               </label>
               <Textarea
