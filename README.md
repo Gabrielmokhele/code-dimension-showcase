@@ -105,18 +105,21 @@ The production-ready files will be in the `dist/` directory.
 ### Deploy to Various Platforms
 
 **Vercel:**
+
 ```bash
 npm install -g vercel
 vercel
 ```
 
 **Netlify:**
+
 ```bash
 npm install -g netlify-cli
 netlify deploy --prod
 ```
 
 **GitHub Pages:**
+
 ```bash
 npm run build
 # Push dist/ directory to gh-pages branch
@@ -130,7 +133,7 @@ Update the base URL in `vite.config.js` if deploying to a subdirectory:
 
 ```javascript
 export default defineConfig({
-  base: '/your-subdirectory/',
+  base: "/your-subdirectory/",
   // ... other config
 });
 ```
@@ -141,7 +144,8 @@ Create a `.env` file in the root directory:
 
 ```
 VITE_API_URL=your_api_url_here
-VITE_CONTACT_EMAIL=info@codedimension.tech
+VITE_CONTACT_EMAIL=hello@codedimension.site
+
 ```
 
 ## License
